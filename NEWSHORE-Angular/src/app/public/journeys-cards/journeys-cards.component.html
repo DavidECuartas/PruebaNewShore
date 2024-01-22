@@ -1,0 +1,86 @@
+<div class="card hover:cursor-pointer w-full flex flex-col justify-center items-center" (click)="toggleClick()">
+
+    <div class=" flex justify-around items-center w-full mt-4 px-4">
+
+        <div class="flex flex-col items-center mx-3">
+            <h4><b>Origen</b></h4>
+            <p>{{journey.origin}}</p>
+        </div>
+        <div class="border-slate-300 border-b-2 flex-grow mx-5"></div>
+        <i class="material-icons opacity-60">flight_takeoff</i>
+        <div class="border-slate-300 border-b-2 flex-grow mx-5"></div>
+        <div></div>
+        <div class="flex flex-col items-center mx-3">
+            <h4><b>Destino</b></h4>
+            <p>{{journey.destination}}</p>
+        </div>
+
+        <div class="flex flex-col justify-center text-lg items-center pl-2 border-slate-300 border-l-2 ml-5">
+            <h4><b> Precio total</b></h4>
+            <p class="text-xl"> {{journey.price && journey.price*amount | currency:
+                symbolCoin:'symbol-narrow':'2.0-0'}} </p>
+        </div>
+
+    </div>
+
+    <div *ngIf="journey.flights && journey.flights.length === 1" class="mt-5 text-center w-full flex flex-col items-center justify-center">
+        <div class="border-b-2 border-gray-300 mb-3 w-9/12 flex justify-center items-center">
+            <h4 class="font-medium text-lg">Directo</h4>
+            <span class=" ml-4 opacity-70 flex items-center">
+                <i class="material-icons opacity-40 ">info</i>
+               <p class="underline underline-offset-1">Detalles del vuelo</p> 
+            </span>
+        </div>
+
+        <div *ngIf="isClicked" class="card">
+            <span>
+                <h4><b>Aerolínea</b></h4>
+                <p>{{journey.flights[0].transport?.flightCarrier}}</p>
+            </span>
+            <span>
+                <h4><b>Número de vuelo</b></h4>
+                <p>{{journey.flights[0].transport?.flightNumber}}</p>
+            </span>
+        </div>
+    </div>
+
+    <div *ngIf="journey.flights && journey.flights.length > 1" class="flex w-full flex-col justify-center items-center">
+        <div class="border-b-2 border-gray-300 mb-3 mt-5 pb-2 w-9/12 text-center flex justify-center items-center">
+            <h4 class="text-lg font-medium ">
+                {{ journey.flights.length - 1 }}
+                {{ journey.flights.length - 1 === 1 ? 'parada ' : 'paradas ' }}
+
+            </h4>
+            <span class=" ml-4 opacity-70 flex items-center">
+                <i class="material-icons opacity-45 ">info</i>
+               <p class="underline underline-offset-1">Detalles del vuelo</p> 
+            </span>
+        </div>
+        <div *ngIf="isClicked" class="flex w-full justify-center items-center">
+            <div *ngFor="let flight of journey.flights" class="card text-center">
+                <span>
+                    <h4><b>Origen</b></h4>
+                    <p>{{flight.origin}}</p>
+                </span>
+                <span>
+                    <h4><b>Destino</b></h4>
+                    <p>{{flight.destination}}</p>
+                </span>
+                <span>
+                    <h4><b>Precio</b></h4>
+                    <p>{{flight.price && flight.price*amount| currency: symbolCoin:'symbol-narrow':'2.0-0'}}</p>
+                </span>
+                <span>
+                    <h4><b>Aerolínea</b></h4>
+                    <p>{{flight.transport?.flightCarrier}}</p>
+                </span>
+                <span>
+                    <h4><b>Número de vuelo</b></h4>
+                    <p>{{flight.transport?.flightNumber}}</p>
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+</div>

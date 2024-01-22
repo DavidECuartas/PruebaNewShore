@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Dólar estadounidense",
+        "value": 1,
+        "symbol": "USD"
+    },
+    {
+        "name": "Euro",
+        "value": 0.92,
+        "symbol": "EUR"
+    },
+    {
+        "name": "Libra esterlina",
+        "value": 0.79,
+        "symbol": "GBP"
+    },
+    {
+        "name": "Peso colombiano",
+        "value": 3908.75,
+        "symbol": "COP"
+    },   
+    {
+        "name": "Peso Argentino",
+        "value": 817.15,
+        "symbol": "ARS"
+    }
+]

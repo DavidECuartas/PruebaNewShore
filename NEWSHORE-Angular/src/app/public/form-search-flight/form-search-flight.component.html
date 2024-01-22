@@ -1,0 +1,54 @@
+<div class="flex flex-col justify-center items-center p-14 ">
+    <h1 class="text-4xl font-bold mb-28">
+        NewShore
+    </h1>
+    <div class="flex w-full">
+        <div class="flex flex-col self-start ">
+            <form [formGroup]="fGroup" class="ml-6 flex flex-col items-center">
+                <div class="flex flex-col items-center p-5 justify-center rounded-lg shadow shadow-dark border-2 bg-secondary ">
+                    <div class="input-container">
+                    <label for="origin" class="label font-semibold ">Origen</label>
+                    <input id="origin" maxlength="3" type="text" formControlName="origin" class="input-text ml-4"
+                        (input)="toUpperCase('origin')">
+                </div>
+                <div class="input-container">
+                    <label for="destination" class="label font-semibold ">Destino</label>
+                    <input id="destination" type="text" formControlName="destination" class="input-text ml-3"
+                        (input)="toUpperCase('destination')" maxlength="3">
+                </div>
+                <button (click)="searchFlights()"
+                    class="bg-blue-400 hover:bg-blue-600 hover:text-white font-bold py-2 px-4 border border-blue-700 rounded flex justify-center">
+                    Buscar
+                    <i class="material-icons ml-1">search</i>
+                </button>
+                </div>
+                
+
+                <div class=" mt-16 p-5  rounded-lg shadow shadow-dark border-2 bg-secondary ">
+                    <p class="font-bold text-lg">Moneda</p>
+                    <select id="selectCoin" formControlName="selectCoin" (change)="onCurrencyChange()"
+                        class="input-text">
+                        <option *ngFor="let coin of coinList" value={{coin.symbol}}>
+                            {{coin.name}} ({{coin.symbol}})
+                        </option>
+                    </select>
+                </div>
+
+            </form>
+        </div>
+        <div class="w-full flex flex-col items-center ">
+            <div *ngIf="viewNoFlights" class="text-2xl font-semibold">
+                No hay vuelos disponibles
+            </div>
+            <div *ngIf="listJourneys.length > 0" class=" w-full">
+                <div class="text-center w-full">
+                        <h2 class="font-semibold text-2xl">Vuelos disponibles</h2>
+                    <div *ngFor="let journey of listJourneys" >
+                        <app-journeys-cards [journey]="journey" [amount]="amount"
+                            [symbolCoin]="symbolCoin"></app-journeys-cards>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
