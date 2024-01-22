@@ -19,5 +19,11 @@ una vez descargue todo, se inicia el proyecto de angular
  
  >> ng s -o
 
-Eso es todo para lo necesario para la ejecución de la solucion
+Eso es todo para lo necesario para la ejecución de la solucion.
+
+Falto implementar:
+- Logs de aplicacion
+- Test unitarios
+- Interceptors
+- inyection tokens
 
